@@ -41,9 +41,13 @@ const Navbar = () => {
                 className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${scrolled || isOpen ? 'py-4 backdrop-blur-md bg-black/80 border-b border-white/5' : 'py-6 bg-transparent'}`}
             >
                 <div className="container mx-auto px-6 flex justify-between items-center relative">
-                    {/* Brand / Home Link */}
-                    <a href="#home" className="text-xl font-orbitron font-bold text-white tracking-widest z-[1100]">
-                        <span className="text-accent-primary">D</span>HARANISH
+                    {/* Brand / Home Link - Glowing Ghost Button */}
+                    <a href="#home" className="relative group overflow-hidden px-8 py-3 rounded-full bg-transparent border border-accent-secondary/50 shadow-[0_0_15px_rgba(0,212,255,0.3)] hover:shadow-[0_0_25px_rgba(0,212,255,0.6)] hover:border-accent-secondary transition-all duration-300 z-[1100]">
+                        <span className="relative z-10 font-orbitron font-bold text-sm tracking-widest text-white group-hover:text-accent-primary transition-colors">
+                            HOME
+                        </span>
+                        <div className="absolute inset-0 bg-accent-secondary/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
+                        <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:left-[100%] transition-all duration-700 ease-in-out" />
                     </a>
 
                     {/* Desktop Menu */}
