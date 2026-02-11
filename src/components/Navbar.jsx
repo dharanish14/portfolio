@@ -38,9 +38,9 @@ const Navbar = () => {
             <motion.nav
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
-                className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${scrolled || isOpen ? 'py-4 backdrop-blur-md bg-black/80 border-b border-white/5' : 'py-6 bg-transparent'}`}
+                className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${scrolled || isOpen ? 'py-4 backdrop-blur-md bg-black/80 border-b border-white/5' : 'py-6 bg-black/20 md:bg-transparent'}`}
             >
-                <div className="container mx-auto px-6 flex justify-end md:justify-center items-center relative">
+                <div className="container mx-auto px-6 flex justify-between md:justify-center items-center relative">
 
                     {/* Desktop Menu - Advanced Hover Effects */}
                     <ul className="hidden md:flex gap-8 list-none">

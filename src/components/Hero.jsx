@@ -22,16 +22,7 @@ const Hero = () => {
                 <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-32">
                     {/* Left Content: Text */}
                     <div className="flex-1 text-center lg:text-left max-w-2xl order-2 lg:order-1">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            className="mb-6 md:mb-8"
-                        >
-                            <span className="font-orbitron text-accent-secondary tracking-[0.3em] md:tracking-[0.5em] text-[10px] md:text-sm uppercase block mb-4">
-                                TAMIL NADU, INDIA | IT STUDENT
-                            </span>
-                            <div className="h-px w-12 bg-accent-secondary mx-auto lg:mx-0" />
-                        </motion.div>
+
 
                         <motion.div
                             initial={{ opacity: 0, scale: 0.95 }}
@@ -187,39 +178,54 @@ const Hero = () => {
                     </div>
 
                     {/* Right Content: Optimized Circular Profile */}
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{
-                            opacity: 1,
-                            scale: 1,
-                            y: [0, -20, 0]
-                        }}
-                        transition={{
-                            duration: 1.2,
-                            ease: "easeOut",
-                            y: {
-                                duration: 4,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }
-                        }}
-                        className="relative order-1 lg:order-2"
-                    >
-                        {/* Interactive Outer Ring */}
-                        <div className="absolute -inset-4 md:-inset-6 border border-accent-secondary/20 rounded-full animate-[spin_20s_linear_infinite]" />
-                        <div className="absolute -inset-8 md:-inset-10 border border-accent-primary/10 rounded-full animate-[spin_30s_linear_infinite_reverse]" />
+                    <div className="flex flex-col items-center order-1 lg:order-2 gap-8">
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{
+                                opacity: 1,
+                                scale: 1,
+                                y: [0, -20, 0]
+                            }}
+                            transition={{
+                                duration: 1.2,
+                                ease: "easeOut",
+                                y: {
+                                    duration: 4,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }
+                            }}
+                            className="relative"
+                        >
+                            {/* Interactive Outer Ring */}
+                            <div className="absolute -inset-4 md:-inset-6 border border-accent-secondary/20 rounded-full animate-[spin_20s_linear_infinite]" />
+                            <div className="absolute -inset-8 md:-inset-10 border border-accent-primary/10 rounded-full animate-[spin_30s_linear_infinite_reverse]" />
 
-                        <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border-2 md:border-4 border-white/5 shadow-2xl group">
-                            <img
-                                src={profileImg}
-                                alt="Dharanish Profile"
-                                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 shadow-inner"
-                            />
+                            <div className="relative w-48 h-48 md:w-80 md:h-80 rounded-full overflow-hidden border-2 md:border-4 border-white/5 shadow-2xl group">
+                                <img
+                                    src={profileImg}
+                                    alt="Dharanish Profile"
+                                    className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 shadow-inner"
+                                />
 
-                            {/* Simple Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
-                        </div>
-                    </motion.div>
+                                {/* Simple Gradient Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
+                            </div>
+                        </motion.div>
+
+                        {/* Location Text - Moved Below Image */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5 }}
+                            className="text-center"
+                        >
+                            <span className="font-orbitron text-accent-secondary tracking-[0.3em] md:tracking-[0.4em] text-[10px] md:text-xs uppercase block mb-3">
+                                TAMIL NADU, INDIA | IT STUDENT
+                            </span>
+                            <div className="h-px w-12 bg-accent-secondary mx-auto" />
+                        </motion.div>
+                    </div>
                 </div>
             </div>
 
