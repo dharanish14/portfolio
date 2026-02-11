@@ -41,25 +41,33 @@ const Navbar = () => {
                 className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${scrolled || isOpen ? 'py-4 backdrop-blur-md bg-black/80 border-b border-white/5' : 'py-6 bg-transparent'}`}
             >
                 <div className="container mx-auto px-6 flex justify-between items-center relative">
-                    {/* Brand / Home Link - Glowing Ghost Button */}
-                    <a href="#home" className="relative group overflow-hidden px-8 py-3 rounded-full bg-transparent border border-accent-secondary/50 shadow-[0_0_15px_rgba(0,212,255,0.3)] hover:shadow-[0_0_25px_rgba(0,212,255,0.6)] hover:border-accent-secondary transition-all duration-300 z-[1100]">
-                        <span className="relative z-10 font-orbitron font-bold text-sm tracking-widest text-white group-hover:text-accent-primary transition-colors">
-                            HOME
+                    {/* Brand / Home Link - Simple & Clean */}
+                    <a href="#home" className="flex items-center gap-2 group z-[1100]">
+                        <div className="w-10 h-10 relative flex items-center justify-center">
+                            <div className="absolute inset-0 bg-accent-primary blur-[20px] opacity-50 group-hover:opacity-100 transition-opacity" />
+                            <img src="/d-logo.svg" alt="D Logo" className="w-8 h-8 relative z-10" />
+                        </div>
+                        <span className="text-xl font-orbitron font-bold text-white tracking-widest hidden sm:block">
+                            HARANISH
                         </span>
-                        <div className="absolute inset-0 bg-accent-secondary/10 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300" />
-                        <div className="absolute top-0 left-[-100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 group-hover:left-[100%] transition-all duration-700 ease-in-out" />
                     </a>
 
-                    {/* Desktop Menu */}
+                    {/* Desktop Menu - Advanced Hover Effects */}
                     <ul className="hidden md:flex gap-8 list-none">
                         {navLinks.map((link) => (
                             <li key={link.name}>
                                 <a
                                     href={link.href}
-                                    className="text-xs font-orbitron font-bold tracking-[0.2em] text-text-secondary hover:text-white transition-colors relative group"
+                                    className="relative px-4 py-2 text-xs font-orbitron font-bold tracking-[0.2em] text-text-secondary hover:text-white transition-colors group overflow-hidden"
                                 >
-                                    {link.name}
-                                    <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-gradient-to-r from-accent-primary to-accent-secondary group-hover:w-full transition-all duration-300" />
+                                    <span className="relative z-10">{link.name}</span>
+
+                                    {/* Hover Encapsulation Effect */}
+                                    <span className="absolute inset-0 border border-white/20 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 origin-center" />
+                                    <span className="absolute inset-0 bg-white/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                                    {/* Glowing Bottom Line */}
+                                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-gradient-to-r from-accent-primary to-accent-secondary group-hover:w-3/4 transition-all duration-300 shadow-[0_0_10px_#00d4ff]" />
                                 </a>
                             </li>
                         ))}
