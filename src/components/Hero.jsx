@@ -82,11 +82,11 @@ const Hero = () => {
                         >
                             <div className="flex items-center gap-3 justify-center lg:justify-start">
                                 <span className="w-1 h-1 rounded-full bg-accent-secondary" />
-                                <span>portfolio.dharanish@gmail.com</span>
+                                <span>dharaanish@gmail.com</span>
                             </div>
                             <div className="flex items-center gap-3 justify-center lg:justify-start">
                                 <span className="w-1 h-1 rounded-full bg-accent-secondary" />
-                                <span>+91 90251 09304</span>
+                                <span>+91 9629023423</span>
                             </div>
                         </motion.div>
 
