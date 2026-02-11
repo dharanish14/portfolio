@@ -118,23 +118,24 @@ const Navbar = () => {
                         animate={{ opacity: 1, scale: 1 }}
                         exit={{ opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.3 }}
-                        className="fixed inset-0 z-[1100] bg-black/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
+                        className="fixed inset-0 z-[2000] bg-black/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center"
                     >
                         {/* Background decorations for mobile menu */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-primary/20 rounded-full blur-[100px] pointer-events-none" />
 
-                        <ul className="flex flex-col items-center gap-8 list-none relative z-10">
+                        <ul className="flex flex-col items-center gap-8 list-none relative z-10 w-full text-center">
                             {navLinks.map((link, idx) => (
                                 <motion.li
                                     key={link.name}
                                     initial={{ opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.1 + idx * 0.1 }}
+                                    className="w-full"
                                 >
                                     <a
                                         href={link.href}
                                         onClick={() => setIsOpen(false)}
-                                        className="text-2xl font-orbitron font-bold tracking-[0.3em] text-white hover:text-accent-secondary transition-all flex items-center gap-4 group"
+                                        className="text-2xl font-orbitron font-bold tracking-[0.3em] text-white hover:text-accent-secondary transition-all flex items-center justify-center gap-4 group py-2"
                                     >
                                         <span className="text-accent-primary opacity-0 group-hover:opacity-100 transition-opacity text-sm">&lt;</span>
                                         {link.name}
