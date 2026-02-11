@@ -28,12 +28,7 @@ const Navbar = () => {
                 }`}
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
-                <motion.div
-                    className="flex items-center gap-3 cursor-pointer group"
-                    whileHover={{ scale: 1.02 }}
-                >
-                    <span className="font-orbitron font-black text-xl tracking-tighter text-white">DHARANISH<span className="text-accent-secondary opacity-50">.</span></span>
-                </motion.div>
+                <div className="hidden md:block" /> {/* Spacer */}
 
                 <ul className="hidden md:flex gap-12 list-none">
                     {navLinks.map((link) => (
