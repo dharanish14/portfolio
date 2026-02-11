@@ -10,6 +10,7 @@ import AnimatedBackground from './components/AnimatedBackground';
 
 function App() {
   useEffect(() => {
+    document.title = "DHARANISH PORTFOLIO";
     const handleMouseMove = (e) => {
       document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
       document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
