@@ -90,7 +90,7 @@ const Navbar = () => {
                         >
                             {/* The Robo Character */}
                             <motion.div
-                                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-8 h-8 flex items-center justify-center"
+                                className="absolute right-0 bottom-[2px] translate-x-1/2 w-8 h-8 flex items-end justify-center"
                                 variants={roboVariants}
                                 initial="hidden"
                                 animate="visible"

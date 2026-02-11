@@ -32,10 +32,7 @@ const Hero = () => {
                         >
                             <h1 className="text-5xl md:text-8xl xl:text-[7.5rem] font-black font-orbitron text-white tracking-tighter leading-[1.1] md:leading-[0.85] flex flex-col relative group">
                                 <span className="relative z-10">DHARANISH</span>
-                                <span className="absolute top-[100%] left-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent scale-y-[-1] blur-[2px] select-none pointer-events-none opacity-40 group-hover:opacity-60 transition-opacity duration-700 md:block hidden">
-                                    DHARANISH
-                                </span>
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-primary via-accent-secondary to-accent-tertiary opacity-20 blur-[1px] select-none pointer-events-none -mt-2 md:-mt-4 md:hidden">
+                                <span className="absolute top-[100%] left-0 w-full text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent scale-y-[-1] blur-[2px] select-none pointer-events-none opacity-40 group-hover:opacity-60 transition-opacity duration-700 block">
                                     DHARANISH
                                 </span>
                             </h1>

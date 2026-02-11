@@ -39,8 +39,8 @@ const About = () => {
                         {journey.map((item, index) => (
                             <motion.div
                                 key={index}
-                                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
+                                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20, y: 20 }}
+                                whileInView={{ opacity: 1, x: 0, y: 0 }}
                                 transition={{ duration: 0.8 }}
                                 className={`relative flex flex-col md:flex-row items-center justify-between ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}
                             >
