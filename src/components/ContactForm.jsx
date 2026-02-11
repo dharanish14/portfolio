@@ -87,34 +87,37 @@ const ContactForm = () => {
                 </motion.div>
               </motion.div>
 
-              {/* Animated Bird (Simplified SVG) */}
+              {/* Realistic Bird Animation */}
               <motion.div
-                initial={{ x: -300 }}
-                animate={{ x: [-300, 0, 500], y: [50, 0, -200] }}
+                initial={{ x: -400, y: 100 }}
+                animate={{
+                  x: [-400, -50, 0, 100, 600],
+                  y: [100, 20, 0, -50, -300],
+                  scale: [0.8, 1, 1, 0.9, 0.5]
+                }}
                 transition={{
-                  duration: 4,
-                  times: [0, 0.5, 1],
+                  duration: 5,
+                  times: [0, 0.4, 0.5, 0.6, 1],
                   ease: "easeInOut"
                 }}
                 className="absolute"
               >
-                <svg width="60" height="40" viewBox="0 0 60 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  {/* Wings animation */}
+                <svg width="100" height="60" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  {/* Bird Body & Wings with path morphing */}
                   <motion.path
-                    d="M10 20C10 20 25 5 40 20M10 25C10 25 25 35 40 25"
-                    stroke="#00d4ff"
-                    strokeWidth="3"
-                    strokeLinecap="round"
+                    fill="#00d4ff"
                     animate={{
                       d: [
-                        "M10 20C10 20 25 5 40 20M10 25C10 25 25 35 40 25",
-                        "M10 20C10 20 25 -10 40 20M10 25C10 25 25 45 40 25",
-                        "M10 20C10 20 25 5 40 20M10 25C10 25 25 35 40 25"
+                        "M50 30 C50 30 70 10 90 30 C70 50 50 30 50 30 Z M50 30 C50 30 30 10 10 30 C30 50 50 30 50 30 Z", // Wings down
+                        "M50 30 C50 30 70 0 90 20 C70 40 50 30 50 30 Z M50 30 C50 30 30 0 10 20 C30 40 50 30 50 30 Z",  // Wings up
+                        "M50 30 C50 30 70 10 90 30 C70 50 50 30 50 30 Z M50 30 C50 30 30 10 10 30 C30 50 50 30 50 30 Z"  // Wings down
                       ]
                     }}
-                    transition={{ repeat: Infinity, duration: 0.4 }}
+                    transition={{ repeat: Infinity, duration: 0.3, ease: "easeInOut" }}
                   />
-                  <path d="M40 22L55 20L40 18V22Z" fill="#00d4ff" />
+                  {/* Head */}
+                  <circle cx="50" cy="25" r="5" fill="#00d4ff" />
+                  <path d="M54 25L62 25L54 28V25Z" fill="#ffaa00" /> {/* Beak */}
                 </svg>
               </motion.div>
             </div>

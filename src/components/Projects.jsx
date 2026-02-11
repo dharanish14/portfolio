@@ -4,13 +4,14 @@ import { motion } from 'framer-motion';
 const ProjectCard = ({ title, tech, description, index }) => {
     return (
         <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50, rotateY: 20 }}
+            whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{
-                delay: index * 0.1,
-                duration: 0.8,
-                ease: [0.22, 1, 0.36, 1]
+                delay: index * 0.2,
+                duration: 1,
+                type: "spring",
+                stiffness: 70
             }}
             whileHover={{ y: -10 }}
             className="group relative h-auto"

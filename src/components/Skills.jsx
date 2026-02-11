@@ -33,9 +33,10 @@ const Skills = () => {
                     {skillCategories.map((cat, i) => (
                         <motion.div
                             key={cat.category}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ delay: i * 0.1, duration: 0.8 }}
+                            initial={{ opacity: 0, x: -30 }} // Sliding entrance
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.2, duration: 0.8 }}
                             className="space-y-6 md:space-y-8"
                         >
                             <div className="flex items-center gap-4">
@@ -47,24 +48,30 @@ const Skills = () => {
                                 {cat.skills.map((skill, idx) => (
                                     <motion.div
                                         key={skill}
-                                        initial={{ opacity: 0, scale: 0.9 }}
-                                        whileInView={{ opacity: 1, scale: 1 }}
-                                        transition={{ delay: (i * 0.1) + (idx * 0.05) }}
+                                        initial={{ opacity: 0, scale: 0.5, rotateY: 90 }} // 3D Pop entrance
+                                        whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{
+                                            delay: (i * 0.2) + (idx * 0.1),
+                                            type: "spring",
+                                            stiffness: 100
+                                        }}
                                         whileHover={{
                                             scale: 1.05,
                                             y: -5,
-                                            boxShadow: "0 10px 30px -10px rgba(0, 212, 255, 0.3)",
-                                            backgroundColor: "rgba(255, 255, 255, 0.05)"
+                                            boxShadow: "0 10px 30px -10px rgba(0, 212, 255, 0.4)",
+                                            backgroundColor: "rgba(255, 255, 255, 0.08)",
+                                            borderColor: "rgba(0, 212, 255, 0.3)"
                                         }}
-                                        className="glass-panel p-3 md:p-4 rounded-lg flex flex-col items-center justify-center gap-2 border-white/5 transition-all duration-300 group"
+                                        className="glass-panel p-3 md:p-4 rounded-lg flex flex-col items-center justify-center gap-2 border-white/5 transition-all duration-300 group cursor-pointer"
                                     >
                                         <div className="text-[9px] md:text-xs font-orbitron text-white group-hover:text-accent-secondary transition-colors duration-300 text-center">{skill}</div>
                                         <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-1">
                                             <motion.div
                                                 initial={{ width: 0 }}
-                                                whileInView={{ width: `${70 + (idx * 8) % 25}%` }}
-                                                transition={{ duration: 1.5, delay: 0.5 + (idx * 0.1) }}
-                                                className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary"
+                                                whileInView={{ width: `${80 + (idx * 5) % 15}%` }}
+                                                transition={{ duration: 1.5, delay: 0.8 + (idx * 0.1) }}
+                                                className="h-full bg-gradient-to-r from-accent-primary to-accent-secondary shadow-[0_0_10px_#7000ff]"
                                             />
                                         </div>
                                     </motion.div>

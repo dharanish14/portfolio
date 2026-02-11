@@ -102,8 +102,20 @@ const Hero = () => {
                     {/* Right Content: Optimized Circular Profile */}
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 1.2, ease: "easeOut" }}
+                        animate={{
+                            opacity: 1,
+                            scale: 1,
+                            y: [0, -20, 0]
+                        }}
+                        transition={{
+                            duration: 1.2,
+                            ease: "easeOut",
+                            y: {
+                                duration: 4,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }
+                        }}
                         className="relative order-1 lg:order-2"
                     >
                         {/* Interactive Outer Ring */}
@@ -114,7 +126,7 @@ const Hero = () => {
                             <img
                                 src={profileImg}
                                 alt="Dharanish Profile"
-                                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110"
+                                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 shadow-inner"
                             />
 
                             {/* Simple Gradient Overlay */}

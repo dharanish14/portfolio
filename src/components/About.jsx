@@ -4,26 +4,20 @@ import { motion } from 'framer-motion';
 const About = () => {
     const journey = [
         {
-            year: "MARCH 2025",
-            title: "🏆 UI/UX DESIGN WINNER",
-            description: "Secured 1st Place in the UI/UX Designing Competition at RMD Engineering College, Chennai.",
-            status: "ACHIEVEMENT"
-        },
-        {
             year: "2022 - 2026",
             title: "B.TECH INFORMATION TECHNOLOGY",
-            description: "Currently pursuing at Velammal Engineering College, Chennai. Maintaining a strong CGPA of 8.47/10.",
+            description: "Bachelor of Technology in Information Technology at Velammal Engineering College, Chennai. Maintaining a strong CGPA of 8.47.",
             status: "STUDENT"
         },
         {
             year: "2021",
-            title: "HSC (MAY 2021)",
+            title: "HSC (HIGHER SECONDARY)",
             description: "Completed at Bharathi Matriculation School with an impressive 90.16% score.",
             status: "COMPLETED"
         },
         {
             year: "2019",
-            title: "SSLC (MAY 2019)",
+            title: "SSLC (SECONDARY SCHOOL)",
             description: "Completed at Bharathi Matriculation School with a stellar 96.00% score.",
             status: "COMPLETED"
         }
