@@ -142,16 +142,23 @@ const ContactForm = () => {
           >
             <div className="form-group">
               <label className="block text-[10px] font-orbitron text-text-secondary/50 mb-2 tracking-widest uppercase">Name</label>
-              <input type="text" name="user_name" placeholder="John Doe" className="interactive font-inter w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-accent-primary outline-none transition-all" required />
+              <input type="text" name="user_name" placeholder="Your Name" className="interactive font-inter w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-accent-primary outline-none transition-all" required />
             </div>
             <div className="form-group">
               <label className="block text-[10px] font-orbitron text-text-secondary/50 mb-2 tracking-widest uppercase">Email</label>
-              <input type="email" name="user_email" placeholder="john@example.com" className="interactive font-inter w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-accent-primary outline-none transition-all" required />
+              <input type="email" name="user_email" placeholder="Your Email" className="interactive font-inter w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-accent-primary outline-none transition-all" required />
             </div>
             <div className="form-group">
               <label className="block text-[10px] font-orbitron text-text-secondary/50 mb-2 tracking-widest uppercase">Message</label>
               <textarea name="message" placeholder="Type your message here..." rows="4" className="interactive font-inter w-full bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:border-accent-primary outline-none transition-all resize-none" required></textarea>
             </div>
+
+            {(SERVICE_ID === 'service_id' || TEMPLATE_ID === 'template_id' || PUBLIC_KEY === 'public_key') && (
+              <div className="mb-4 p-2 border border-accent-secondary/30 bg-accent-secondary/5 rounded-md flex items-center gap-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-accent-secondary animate-pulse" />
+                <span className="text-[9px] font-orbitron text-accent-secondary tracking-widest">SIMULATION MODE ACTIVE - EMAILS WILL NOT BE SENT</span>
+              </div>
+            )}
 
             <motion.button
               whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(112, 0, 255, 0.4)' }}
