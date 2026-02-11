@@ -12,16 +12,25 @@ const ContactForm = () => {
     setLoading(true);
     setStatus('sending');
 
-    // IMPORTANT: Replace these with your actual EmailJS credentials
     const SERVICE_ID = 'service_id';
     const TEMPLATE_ID = 'template_id';
     const PUBLIC_KEY = 'public_key';
+
+    // Simulation Mode for local testing/previewing bird animation
+    if (SERVICE_ID === 'service_id' || TEMPLATE_ID === 'template_id' || PUBLIC_KEY === 'public_key') {
+      setTimeout(() => {
+        setStatus('success');
+        form.current.reset();
+        setTimeout(() => setStatus(''), 6000);
+        setLoading(false);
+      }, 1500);
+      return;
+    }
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
       .then((result) => {
         setStatus('success');
         form.current.reset();
-        // Reset status after animation
         setTimeout(() => setStatus(''), 6000);
       }, (error) => {
         setStatus('error');
@@ -34,8 +43,13 @@ const ContactForm = () => {
 
   return (
     <div className="contact-container glass relative overflow-hidden min-h-[500px] flex flex-col justify-center">
-      {/* Decorative Top Bar */}
-      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent-primary to-transparent opacity-30" />
+      {/* Animated Scanning Top Bar */}
+      <motion.div
+        initial={{ x: '-100%' }}
+        animate={{ x: '100%' }}
+        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+        className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-accent-primary to-transparent opacity-50"
+      />
 
       <h2 className="font-orbitron font-black text-white text-center mb-8 tracking-[0.3em]">GET IN TOUCH</h2>
 
