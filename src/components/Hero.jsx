@@ -14,7 +14,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030014] py-20 lg:py-0">
+        <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030014] py-20 lg:py-0 lg:pt-32">
             {/* Ambient Background Glows */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[800px] md:h-[800px] bg-accent-primary/10 rounded-full blur-[120px] pointer-events-none" />
 
