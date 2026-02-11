@@ -40,17 +40,7 @@ const Navbar = () => {
                 animate={{ y: 0 }}
                 className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-500 ${scrolled || isOpen ? 'py-4 backdrop-blur-md bg-black/80 border-b border-white/5' : 'py-6 bg-transparent'}`}
             >
-                <div className="container mx-auto px-6 flex justify-between items-center relative">
-                    {/* Brand / Home Link - Simple & Clean */}
-                    <a href="#home" className="flex items-center gap-2 group z-[1100]">
-                        <div className="w-10 h-10 relative flex items-center justify-center">
-                            <div className="absolute inset-0 bg-accent-primary blur-[20px] opacity-50 group-hover:opacity-100 transition-opacity" />
-                            <img src="/d-logo.svg" alt="D Logo" className="w-8 h-8 relative z-10" />
-                        </div>
-                        <span className="text-xl font-orbitron font-bold text-white tracking-widest hidden sm:block">
-                            HARANISH
-                        </span>
-                    </a>
+                <div className="container mx-auto px-6 flex justify-end md:justify-center items-center relative">
 
                     {/* Desktop Menu - Advanced Hover Effects */}
                     <ul className="hidden md:flex gap-8 list-none">
