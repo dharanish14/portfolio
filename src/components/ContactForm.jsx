@@ -7,14 +7,15 @@ const ContactForm = () => {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
+  // IMPORTANT: Replace these with your actual EmailJS credentials
+  const SERVICE_ID = 'service_id';
+  const TEMPLATE_ID = 'template_id';
+  const PUBLIC_KEY = 'public_key';
+
   const sendEmail = (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus('sending');
-
-    const SERVICE_ID = 'service_id';
-    const TEMPLATE_ID = 'template_id';
-    const PUBLIC_KEY = 'public_key';
 
     // Simulation Mode for local testing/previewing bird animation
     if (SERVICE_ID === 'service_id' || TEMPLATE_ID === 'template_id' || PUBLIC_KEY === 'public_key') {
