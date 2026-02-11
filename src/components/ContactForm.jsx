@@ -69,14 +69,26 @@ const ContactForm = () => {
 
       <style>{`
         .contact-container {
-          padding: 3rem;
+          padding: 1.5rem;
+          width: 100%;
           max-width: 600px;
           margin: 0 auto;
         }
+        @media (min-width: 768px) {
+          .contact-container {
+            padding: 3rem;
+          }
+        }
         h2 {
           margin-bottom: 2rem;
-          font-size: 2.5rem;
+          font-size: 1.8rem;
           text-align: center;
+          letter-spacing: 0.2rem;
+        }
+        @media (min-width: 768px) {
+          h2 {
+            font-size: 2.5rem;
+          }
         }
         .form-group {
           margin-bottom: 1.5rem;
@@ -84,26 +96,28 @@ const ContactForm = () => {
         input, textarea {
           width: 100%;
           padding: 1rem;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid var(--glass-border);
-          border-radius: 8px;
+          background: rgba(255, 255, 255, 0.02);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 4px;
           color: white;
-          font-size: 1rem;
+          font-size: 0.875rem;
           outline: none;
-          transition: all 0.3s ease;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         input:focus, textarea:focus {
-          border-color: var(--accent-color);
+          border-color: #7000ff;
           background: rgba(112, 0, 255, 0.05);
+          box-shadow: 0 0 15px rgba(112, 0, 255, 0.1);
         }
         .submit-btn {
           width: 100%;
           padding: 1rem;
-          background: var(--accent-color);
+          background: #7000ff;
           color: white;
           border: none;
-          border-radius: 8px;
-          font-weight: 600;
+          border-radius: 4px;
+          font-weight: 900;
+          font-size: 0.75rem;
           cursor: pointer;
           transition: all 0.3s ease;
         }
