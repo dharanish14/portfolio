@@ -7,10 +7,10 @@ const ContactForm = () => {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // IMPORTANT: Replace these with your actual EmailJS credentials
-  const SERVICE_ID = 'service_id';
-  const TEMPLATE_ID = 'template_id';
-  const PUBLIC_KEY = 'public_key';
+  // IMPORTANT: Live EmailJS credentials
+  const SERVICE_ID = 'service_nmctadg';
+  const TEMPLATE_ID = 'template_4sggxae';
+  const PUBLIC_KEY = 'aKhGRg5XDQ3PnP_Uz';
 
   const sendEmail = (e) => {
     e.preventDefault();
