@@ -1,41 +1,70 @@
-import React, { useState } from 'react';
+```javascript
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const [isHovered, setIsHovered] = useState(false);
+    const [activeSection, setActiveSection] = useState('home');
 
     const navLinks = [
-        { name: 'HOME', href: '#home' },
-        { name: 'ABOUT', href: '#about' },
-        { name: 'PROJECTS', href: '#work' },
-        { name: 'SKILLS', href: '#skills' },
-        { name: 'CONTACT', href: '#contact' },
+        { name: 'HOME', href: '#home', id: 'home' },
+        { name: 'ABOUT', href: '#about', id: 'about' },
+        { name: 'PROJECTS', href: '#work', id: 'work' },
+        { name: 'SKILLS', href: '#skills', id: 'skills' },
+        { name: 'CONTACT', href: '#contact', id: 'contact' },
     ];
 
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = navLinks.map(link => document.getElementById(link.id));
+            const scrollPosition = window.scrollY + window.innerHeight / 3;
+
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = sections[i];
+                if (section && section.offsetTop <= scrollPosition) {
+                    setActiveSection(navLinks[i].id);
+                    break;
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Map sections to screen positions
+    const getOrbPosition = () => {
+        switch (activeSection) {
+            case 'home': return { top: '2rem', right: '2rem', x: 0, y: 0 };
+            case 'about': return { top: 'calc(100% - 8rem)', right: '2rem', x: 0, y: 0 };
+            case 'work': return { top: 'calc(100% - 8rem)', right: 'calc(100% - 8rem)', x: 0, y: 0 };
+            case 'skills': return { top: '2rem', right: 'calc(100% - 8rem)', x: 0, y: 0 };
+            case 'contact': return { top: '50%', right: '2rem', x: 0, y: '-50%' };
+            default: return { top: '2rem', right: '2rem', x: 0, y: 0 };
+        }
+    };
+
     return (
-        <div className="fixed top-8 right-8 z-[2000]">
+        <motion.div
+            layout
+            animate={getOrbPosition()}
+            transition={{ type: 'spring', stiffness: 50, damping: 15 }}
+            className="fixed z-[2000] w-24 h-24 flex items-center justify-center"
+        >
             <motion.div
                 onHoverStart={() => setIsHovered(true)}
                 onHoverEnd={() => setIsHovered(false)}
-                className="relative flex items-center justify-end"
+                className="relative flex items-center justify-center w-full h-full"
             >
-                {/* HUD Label */}
-                <motion.div
-                    animate={{ opacity: isHovered ? 1 : 0.4 }}
-                    className="absolute right-full mr-12 hidden md:block"
-                >
-                    <span className="text-[10px] font-orbitron font-bold tracking-[0.5em] text-accent-secondary/60 uppercase pointer-events-none whitespace-nowrap">
-                        Nav System Active
-                    </span>
-                </motion.div>
-
                 <AnimatePresence>
                     {isHovered && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8, x: 50 }}
+                            initial={{ opacity: 0, scale: 0.8, x: activeSection === 'work' || activeSection === 'skills' ? -50 : 50 }}
                             animate={{ opacity: 1, scale: 1, x: 0 }}
-                            exit={{ opacity: 0, scale: 0.8, x: 50 }}
-                            className="absolute right-full mr-6 flex flex-col md:flex-row gap-4 p-4 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl md:rounded-full shadow-[0_0_50px_rgba(0,0,0,0.5)] border-accent-secondary/20"
+                            exit={{ opacity: 0, scale: 0.8, x: activeSection === 'work' || activeSection === 'skills' ? -50 : 50 }}
+                            className={`absolute flex flex - col md: flex - row gap - 4 p - 4 bg - black / 60 backdrop - blur - 2xl border border - white / 10 rounded - 2xl md: rounded - full shadow - [0_0_50px_rgba(0, 0, 0, 0.5)] border - accent - secondary / 20
+                                ${ activeSection === 'work' || activeSection === 'skills' ? 'left-full ml-6' : 'right-full mr-6' }
+`}
                         >
                             {navLinks.map((link, idx) => (
                                 <motion.a
@@ -44,6 +73,7 @@ const Navbar = () => {
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: idx * 0.05 }}
+                                    onClick={() => setIsHovered(false)}
                                     className="px-6 py-2 text-[10px] font-orbitron font-black tracking-[0.3em] text-white/50 hover:text-white hover:bg-accent-primary/20 rounded-full transition-all whitespace-nowrap border border-transparent hover:border-accent-primary/30"
                                 >
                                     {link.name}
@@ -58,7 +88,7 @@ const Navbar = () => {
                     animate={{
                         scale: isHovered ? 1.1 : 1,
                     }}
-                    className="relative w-20 h-20 md:w-24 md:h-24 cursor-pointer group flex items-center justify-center"
+                    className="relative w-20 h-20 md:w-24 md:h-24 cursor-pointer group flex items-center justify-center transform-gpu"
                     onClick={() => setIsHovered(!isHovered)}
                 >
                     {/* Multiple HUD Rings */}
@@ -108,8 +138,9 @@ const Navbar = () => {
                     />
                 </motion.div>
             </motion.div>
-        </div>
+        </motion.div>
     );
 };
 
 export default Navbar;
+```
