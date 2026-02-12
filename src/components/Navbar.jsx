@@ -1,4 +1,3 @@
-```javascript
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -29,18 +28,20 @@ const Navbar = () => {
         };
 
         window.addEventListener('scroll', handleScroll);
+        // Run once on mount to set initial position
+        handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     // Map sections to screen positions
     const getOrbPosition = () => {
         switch (activeSection) {
-            case 'home': return { top: '2rem', right: '2rem', x: 0, y: 0 };
-            case 'about': return { top: 'calc(100% - 8rem)', right: '2rem', x: 0, y: 0 };
-            case 'work': return { top: 'calc(100% - 8rem)', right: 'calc(100% - 8rem)', x: 0, y: 0 };
-            case 'skills': return { top: '2rem', right: 'calc(100% - 8rem)', x: 0, y: 0 };
-            case 'contact': return { top: '50%', right: '2rem', x: 0, y: '-50%' };
-            default: return { top: '2rem', right: '2rem', x: 0, y: 0 };
+            case 'home': return { top: '2rem', right: '2rem', left: 'auto', bottom: 'auto', x: 0, y: 0 };
+            case 'about': return { top: 'auto', bottom: '2rem', right: '2rem', left: 'auto', x: 0, y: 0 };
+            case 'work': return { top: 'auto', bottom: '2rem', left: '2rem', right: 'auto', x: 0, y: 0 };
+            case 'skills': return { top: '2rem', left: '2rem', right: 'auto', bottom: 'auto', x: 0, y: 0 };
+            case 'contact': return { top: '50%', right: '2rem', left: 'auto', bottom: 'auto', x: 0, y: '-50%' };
+            default: return { top: '2rem', right: '2rem', left: 'auto', bottom: 'auto', x: 0, y: 0 };
         }
     };
 
@@ -49,22 +50,22 @@ const Navbar = () => {
             layout
             animate={getOrbPosition()}
             transition={{ type: 'spring', stiffness: 50, damping: 15 }}
-            className="fixed z-[2000] w-24 h-24 flex items-center justify-center"
+            className="fixed z-[2000] w-24 h-24 flex items-center justify-center pointer-events-none"
         >
             <motion.div
                 onHoverStart={() => setIsHovered(true)}
                 onHoverEnd={() => setIsHovered(false)}
-                className="relative flex items-center justify-center w-full h-full"
+                className="relative flex items-center justify-center w-full h-full pointer-events-auto"
             >
                 <AnimatePresence>
                     {isHovered && (
                         <motion.div
-                            initial={{ opacity: 0, scale: 0.8, x: activeSection === 'work' || activeSection === 'skills' ? -50 : 50 }}
+                            initial={{ opacity: 0, scale: 0.8, x: (activeSection === 'work' || activeSection === 'skills') ? -50 : 50 }}
                             animate={{ opacity: 1, scale: 1, x: 0 }}
-                            exit={{ opacity: 0, scale: 0.8, x: activeSection === 'work' || activeSection === 'skills' ? -50 : 50 }}
-                            className={`absolute flex flex - col md: flex - row gap - 4 p - 4 bg - black / 60 backdrop - blur - 2xl border border - white / 10 rounded - 2xl md: rounded - full shadow - [0_0_50px_rgba(0, 0, 0, 0.5)] border - accent - secondary / 20
-                                ${ activeSection === 'work' || activeSection === 'skills' ? 'left-full ml-6' : 'right-full mr-6' }
-`}
+                            exit={{ opacity: 0, scale: 0.8, x: (activeSection === 'work' || activeSection === 'skills') ? -50 : 50 }}
+                            className={`absolute flex flex-col md:flex-row gap-4 p-4 bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl md:rounded-full shadow-[0_0_50px_rgba(0,0,0,0.5)] border-accent-secondary/20
+                                ${(activeSection === 'work' || activeSection === 'skills') ? 'left-full ml-6' : 'right-full mr-6'}
+                            `}
                         >
                             {navLinks.map((link, idx) => (
                                 <motion.a
@@ -143,4 +144,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-```
